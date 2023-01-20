@@ -1,15 +1,30 @@
-.tarjeta {
-  min-width: 400px;
-  max-width: 600px;
+.card {
+  display: flex;
+  margin: 8px;
+  border-radius: 20px;
+  object-fit: cover;
 }
 
-.circular {
-  border-radius: 50%;
-}
-
-.contenedor {
-  height: 100vh;
+.card-image {
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 24px;
 }
+
+.card-content p {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 6px;
+}
+
+.button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 6px;
+}
+

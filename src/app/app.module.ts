@@ -12,6 +12,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BodyComponent } from './components/body/body.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CardComponent } from './components/card/card.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     HeaderComponent,
     BodyComponent,
+    CardComponent,
+    FooterComponent
+
   ],
   imports: [
     BrowserModule,

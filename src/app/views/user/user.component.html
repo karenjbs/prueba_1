@@ -1,33 +1,22 @@
 <app-navbar></app-navbar>
 <div class="container">
-  <app-header titulo="Productos"></app-header>
-  <button (click)="redireccionarVistaEditar()" type="button" class="btn btn-primary">Agregar</button>
+  <app-header titulo="Usuarios"></app-header>
   <p></p>
-  <table class="table table-striped table-hover">
-    <thead>
-      <tr class="table-dark text-center">
-        <th scope="col">ACCIONES</th>
-        <th scope="col">ID</th>
-        <th scope="col">EMAIL</th>
-        <th scope="col">NOMBRE</th>
-        <th scope="col">APELLIDO</th>
-        <th scope="col">AVATAR</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="table-secondary text-center" *ngFor="let usuario of usuarios">
-        <th>
-          <button (click)="redireccionarVistaEditar()"style="margin: 2px" type="button" class="btn btn-outline-info">Editar</button>
-          <button (click)="eliminarUsuario(usuario.id)" style="margin: 2px" type="button"
-            class="btn btn-outline-warning">Eliminar</button>
-        </th>
-        <th scope="row">{{usuario.id}}</th>
-        <td>{{usuario.email}}</td>
-        <td>{{usuario.first_name}}</td>
-        <td>{{usuario.last_name}}</td>
-        <td>{{usuario.avatar}}</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  <div class="row">
+    <div class="col s12 m6 l4" *ngFor="let usuario of usuarios">
+  <div class="card">
+    <div class="card-image">
+      <img [src]="usuario.avatar ? usuario.avatar : 'https://www.biography.com/.image/t_share/MTE4MDAzNDEwNzQ4NDA5MzU4/ricky-martin-9542230-1-402.jpg'">
+    </div>
+    <div class="card-content">
+      <p>{{usuario.first_name}} {{usuario.last_name}}</p>
+      <p>{{usuario.email}}</p>
+    </div>
+    <th class="button">
+      <button (click)="agregarUsuario(usuario.data)" style="margin: 2px" type="button" class="btn btn-outline-danger">Agregar</button>
+      <button (click)="editarUsuario(usuario.data)"style="margin: 2px" type="button" class="btn btn-outline-info">Editar</button>
+      <button (click)="eliminarUsuario(usuario.data)" style="margin: 2px" type="button"class="btn btn-outline-warning">Eliminar</button>
+    </th>
+    </div>
+  </div>
+

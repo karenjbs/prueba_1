@@ -1,0 +1,13 @@
+.card-producto{
+  align-items: center;
+  justify-content: center;
+}
+.card-producto img {
+  width: 50%;
+  height: 90%;
+  margin: 24px;
+  align-items: center;
+  justify-items: auto;
+}
+
+

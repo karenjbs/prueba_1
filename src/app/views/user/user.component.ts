@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/models/usuario';
+import { Usuarios } from 'src/app/models/usuarios';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -28,8 +29,10 @@ export class UserComponent implements OnInit {
   }
 
   eliminarUsuario(data: any) {
-    this.userService.deleteUser(data).subscribe((response: any) => {
-      console.log(response);
+    console.log(data);
+    this.userService.deleteUser(data).subscribe((data: any) => {
+      console.log(data);
+      this.listar();
     })
   }
 
@@ -42,5 +45,29 @@ export class UserComponent implements OnInit {
   redireccionarVistaEditar() {
     this.router.navigateByUrl('/**')
   }
+
+  editarUsuario(data: any){
+    let editarUsuario:Usuarios = this.transformaUsuario(this.usuarios)
+    console.log("Editar Usuario", editarUsuario);
+    this.userService.saveUser(data).subscribe((response: any) => {
+      console.log(response);
+    })
+  }
+
+  agregarUsuario(data: any){
+    let agregarUsuario:Usuarios = this.transformaUsuario(this.usuarios)
+    console.log("Agregar Usuario", agregarUsuario);
+
+    this.userService.putUser(data).subscribe(data=>{
+      console.log(data);
+    })
+  }
+
+  transformaUsuario(data:any){
+    let usuarios = new Usuarios(data.name, data.job);
+    return new Usuarios(data.name, data.job);
+  }
+
+
 
 }

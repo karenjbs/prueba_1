@@ -5,6 +5,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { UserComponent } from './views/user/user.component';
 
+
 const routes: Routes = [
   {path:"", component:HomeComponent},
   {path:"registro", component:RegisterComponent},
