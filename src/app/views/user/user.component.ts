@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/models/usuario';
 import { UserService } from 'src/app/services/user.service';
@@ -8,54 +9,38 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserComponent implements OnInit{
+export class UserComponent implements OnInit {
 
   usuarios: Usuario[] = [];
+  listaUsuarios = this.fb.group({
+    data: ["", Validators.required],
+    id: ["", Validators.required],
+    email: ["", Validators.required],
+    first_name: ["",Validators.required],
+    last_name: ["",Validators.required],
+    avatar: [""],
+  }, {});
 
-    id: string="";
-    email: string="";
-    first_name: string="";
-    last_name: string="";
-    avatar: string="";
+  constructor(private fb: FormBuilder,private userService: UserService, private router: Router) { }
 
-  constructor( private userService: UserService, private router: Router) { }
+  ngOnInit(): void {
+    this.listar();
+  }
 
-  ngOnInit(): void {}
+  eliminarUsuario(data: any) {
+    this.userService.deleteUser(data).subscribe((response: any) => {
+      console.log(response);
+    })
+  }
 
+  listar() {
+    this.userService.getUsers().subscribe((response: any) => {
+      this.usuarios = response.data;
+    })
+  }
 
-eliminarUsuario(id:any){
-  console.log(id);
-  this.userService.deleteUser(id).subscribe((data:any)=>  {
-    console.log(data);
-    this.getUsuarios();
-  })
-}
-
-
-registarUsuario(){
-  let usuario: Usuario = this.editarUsuario(this.getUsuarios)
-  console.log(usuario);
-
-  this.userService.saveUser(usuario).subscribe((data:any) =>{
-    if(data){
-      this.router.navigateByUrl('/usuarios')
-    }
-  })
-
-}
-
-editarUsuario(data:any){
-  return new Usuario (data.id, data.email, data.first_name, data.last_name, data.avatar);
-}
-
-getUsuarios(){
-  this.userService.gerUsers().subscribe((data: any) =>{
-    this.usuarios = data;
-  })
-}
-
-redireccionarVistaEditar() {
-  this.router.navigateByUrl('/productos')
-}
+  redireccionarVistaEditar() {
+    this.router.navigateByUrl('/**')
+  }
 
 }

@@ -17,8 +17,8 @@ export class UserService {
   }
 
   constructor(private http: HttpClient) { }
-  gerUsers() {
-    return this.http.get("https://reqres.in/api/users?page=2");
+  getUsers() {
+    return this.http.get("https://reqres.in/api/users?page=1");
   }
 
   saveUser(usuario: Usuario) {
@@ -30,7 +30,7 @@ export class UserService {
   }
 
   deleteUser(id: number) {
-    return this.http.delete(url + "/api/users/2/" + id);
+    return this.http.delete(url + "/api/users/2" + id);
   }
 
 }
