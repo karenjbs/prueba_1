@@ -3,7 +3,7 @@
   <legend>Registo Usuario</legend>
   <div class="row d-flex justify-content-center">
     <div class="col-md-5">
-      <form (ngSubmit)="registrarUsuario()">
+      <form [formGroup]="formularioRegistro"(ngSubmit)="enviarRegistroUsuario()">
         <fieldset>
           <div class="form-group">
             <label for="Email" class="form-label mt-4">Email <span class="text-danger">*</span></label>
@@ -17,7 +17,7 @@
             <div class="text-danger">El campo contraseña es requerido</div>
           </div>
           <div class="form-group d-grid gap-2 mt-3">
-            <button (click)="redireccionarIniciarSesion()"class="btn btn-outline-primary" type="submit">Crear Usuario</button>
+            <button class="btn btn-outline-primary" type="submit">Crear Usuario</button>
           </div>
         </fieldset>
       </form>

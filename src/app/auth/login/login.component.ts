@@ -9,7 +9,6 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-
   formularioSesion = this.fb.group({
     email: ["", Validators.required],
     password: ["", Validators.required],

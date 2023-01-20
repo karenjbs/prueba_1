@@ -12,7 +12,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BodyComponent } from './components/body/body.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UsersComponent } from './user/users/users.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +23,6 @@ import { UsersComponent } from './user/users/users.component';
     NavbarComponent,
     HeaderComponent,
     BodyComponent,
-    UsersComponent
   ],
   imports: [
     BrowserModule,
