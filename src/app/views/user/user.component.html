@@ -1,0 +1,32 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <app-header titulo="Usuarios"></app-header>
+  <button type="button" class="btn btn-primary">Agregar</button>
+  <p></p>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr class="table-dark text-center">
+        <th scope="col">ACIONES</th>
+        <th scope="col">ID</th>
+        <th scope="col">EMAIL</th>
+        <th scope="col">NOMBRE</th>
+        <th scope="col">APELLIDO</th>
+        <th scope="col">AVATAR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-secondary text-center" *ngFor="let usuario of usuarios">
+        <th>
+          <button (click)="redireccionarVistaEditar()"style="margin: 2px" type="button" class="btn btn-outline-info">Editar</button>
+          <button  (click)="eliminarUsuario(usuario.id)" style="margin: 2px" type="button"
+            class="btn btn-outline-warning">Eliminar</button>
+        </th>
+        <th scope="row">{{usuario.id}}</th>
+        <td>{{usuario.email}}</td>
+        <td>{{usuario.first_name}}</td>
+        <td>{{usuario.last_name}} </td>
+        <td>{{usuario.avatar}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
